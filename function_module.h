@@ -19,9 +19,12 @@ class FunctionModule {
         virtual FunctionData** getFunctions(unsigned int *count_functions) = 0;
         virtual void *writePC(unsigned int *buffer_length) = 0;
         
+        //intepreter - program & lib
+        virtual void readPC(void *buffer, unsigned int buffer_length) = 0;
+        
         //intepreter - program
         virtual FunctionResult* executeFunction(system_value function_index, void **args) = 0;
-        virtual int startProgram(int uniq_index, void *buffer, unsigned int buffer_length) = 0;
+        virtual int startProgram(int uniq_index) = 0;
         virtual int endProgram(int uniq_index) = 0;
         
         //destructor

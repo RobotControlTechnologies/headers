@@ -25,8 +25,11 @@ class ControlModule {
         virtual void execute(sendAxisState_t sendAxisState) = 0;
         virtual void final() = 0;
         
+        //intepreter - program & lib
+        virtual void readPC(void *buffer, unsigned int buffer_length) = 0;
+        
         //intepreter - program
-        virtual int startProgram(int uniq_index, void *buffer, unsigned int buffer_length) = 0;
+        virtual int startProgram(int uniq_index) = 0;
         virtual int endProgram(int uniq_index) = 0;
         
         //destructor
