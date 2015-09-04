@@ -17,7 +17,7 @@ class ControlModule {
 
  public:
   // init
-  virtual const char *getUID() = 0;
+  virtual const struct ModuleInfo& getModuleInfo() = 0;
   virtual void prepare(colorPrintfModule_t *colorPrintf_p,
                        colorPrintfModuleVA_t *colorPrintfVA_p) = 0;
 
