@@ -7,13 +7,15 @@
 #ifndef FUNCTION_MODULE_H
 #define FUNCTION_MODULE_H
 
+#define FUNCTION_MODULE_API_VERSION 100;
+
 class FunctionModule {
  protected:
   FunctionModule() {}
 
  public:
   // init
-  virtual const char *getUID() = 0;
+  virtual const struct ModuleInfo& getModuleInfo() = 0;
   virtual void prepare(colorPrintfModule_t *colorPrintf_p,
                        colorPrintfModuleVA_t *colorPrintfVA_p) = 0;
 
@@ -35,9 +37,12 @@ class FunctionModule {
   virtual ~FunctionModule() {}
 };
 
+typedef unsigned short (*getFunctionModuleApiVersion_t)();
 typedef FunctionModule *(*getFunctionModuleObject_t)();
+
 extern "C" {
-PREFIX_FUNC_DLL FunctionModule *getFunctionModuleObject();
+  PREFIX_FUNC_DLL unsigned short getFunctionModuleApiVersion() /*{ return FUNCTION_MODULE_API_VERSION; }*/;
+  PREFIX_FUNC_DLL FunctionModule *getFunctionModuleObject();
 }
 
 #endif /* FUNCTION_MODULE_H */

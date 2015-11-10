@@ -7,6 +7,8 @@
 #ifndef ROBOT_MODULE_H
 #define ROBOT_MODULE_H
 
+#define ROBOT_MODULE_API_VERSION 100;
+
 #define ROBOT_COMMAND_FREE 0
 #define ROBOT_COMMAND_HAND_CONTROL_BEGIN -1
 #define ROBOT_COMMAND_HAND_CONTROL_END -2
@@ -39,7 +41,7 @@ class RobotModule {
 
  public:
   // init
-  virtual const char *getUID() = 0;
+  virtual const struct ModuleInfo& getModuleInfo() = 0;
   virtual void prepare(colorPrintfModule_t *colorPrintf_p,
                        colorPrintfModuleVA_t *colorPrintfVA_p) = 0;
 
@@ -66,8 +68,11 @@ class RobotModule {
   virtual ~RobotModule() {}
 };
 
+typedef unsigned short (*getRobotModuleApiVersion_t)();
 typedef RobotModule *(*getRobotModuleObject_t)();
+
 extern "C" {
+PREFIX_FUNC_DLL unsigned short getRobotModuleApiVersion() /*{ return ROBOT_MODULE_API_VERSION; }*/;
 PREFIX_FUNC_DLL RobotModule *getRobotModuleObject();
 }
 
