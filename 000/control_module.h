@@ -44,8 +44,10 @@ class ControlModule {
 
 typedef ControlModule *(*getControlModuleObject_t)();
 
+#ifndef MODULE_WRAPPER
 extern "C" {
   PREFIX_FUNC_DLL ControlModule *getControlModuleObject();
 }
+#endif
 
 #endif /* CONTROL_MODULE_H_000 */

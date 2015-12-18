@@ -64,8 +64,10 @@ class RobotModule {
 
 typedef RobotModule *(*getRobotModuleObject_t)();
 
+#ifndef MODULE_WRAPPER
 extern "C" {
   PREFIX_FUNC_DLL RobotModule *getRobotModuleObject();
 }
+#endif
 
 #endif /* ROBOT_MODULE_H_000 */

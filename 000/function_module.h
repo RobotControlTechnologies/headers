@@ -37,8 +37,10 @@ class FunctionModule {
 
 typedef FunctionModule *(*getFunctionModuleObject_t)();
 
+#ifndef MODULE_WRAPPER
 extern "C" {
   PREFIX_FUNC_DLL FunctionModule *getFunctionModuleObject();
 }
+#endif
 
 #endif /* FUNCTION_MODULE_H_000 */

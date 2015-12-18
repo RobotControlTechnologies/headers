@@ -7,6 +7,9 @@
 #ifndef MODULE_H
 #define MODULE_H
 
+#include <cstdarg>
+#include <cstddef>
+
 typedef int system_value;
 typedef double variable_value;
 
