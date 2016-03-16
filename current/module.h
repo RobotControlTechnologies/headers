@@ -17,18 +17,19 @@
 typedef int system_value;
 typedef double variable_value;
 
-enum class ModuleTypes {
-	Robot = 1,
-	Control = 2,
-	Function = 3,
-  DB = 4
-};
+enum class ModuleTypes { Robot = 1, Control = 2, Function = 3, DB = 4 };
 
 struct ModuleInfo {
   char *uid;
   enum Modes { PROD, SPEC } mode;
   unsigned short version;
   char *digest;
+};
+
+struct VRobotInfo {
+  bool useVRobot = true;
+  char *SDF = "";
+  char *AdapterName = "";
 };
 
 struct FunctionData {
@@ -65,6 +66,7 @@ struct AxisData {
 class FunctionResult {
  public:
   enum Types { EXCEPTION, VALUE };
+
  private:
   Types type;
   variable_value result;
@@ -113,10 +115,8 @@ typedef void(colorPrintfModule_t)(void *, ConsoleColor, const char *, ...);
 typedef void(colorPrintfModuleVA_t)(void *, ConsoleColor, const char *,
                                     va_list);
 
-typedef void(colorPrintfRobot_t)(void *, ConsoleColor,
-                                 const char *, ...);
-typedef void(colorPrintfRobotVA_t)(void *, ConsoleColor,
-                                   const char *, va_list);
+typedef void(colorPrintfRobot_t)(void *, ConsoleColor, const char *, ...);
+typedef void(colorPrintfRobotVA_t)(void *, ConsoleColor, const char *, va_list);
 
 #ifdef _WIN32
 #define PREFIX_FUNC_DLL __declspec(dllexport)
