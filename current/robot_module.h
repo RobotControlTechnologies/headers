@@ -7,6 +7,8 @@
 #ifndef ROBOT_MODULE_H
 #define ROBOT_MODULE_H
 
+#include "adapter_headers\vRobot_header.h"
+
 #define ROBOT_COMMAND_FREE 0
 #define ROBOT_COMMAND_HAND_CONTROL_BEGIN -1
 #define ROBOT_COMMAND_HAND_CONTROL_END -2
@@ -31,6 +33,12 @@ class Robot {
   virtual FunctionResult *executeFunction(CommandMode mode,
                                           system_value command_index,
                                           void **args) = 0;
+
+  virtual void setVRobot(CvRobot *pVRobot) = 0;
+  virtual FunctionResult *executeFunctionV(CommandMode mode,
+                                           system_value command_index,
+                                           void **args) = 0;
+
   virtual void axisControl(system_value axis_index, variable_value value) = 0;
   virtual ~Robot() {}
 };
@@ -38,7 +46,8 @@ class Robot {
 struct AviableRobotsReult {
   Robot **robots;
   unsigned int count_robots;
-  AviableRobotsReult(Robot **robots, unsigned int count_robots) : robots(robots), count_robots(count_robots) {}
+  AviableRobotsReult(Robot **robots, unsigned int count_robots)
+      : robots(robots), count_robots(count_robots) {}
   void destroy() { delete this; }
   ~AviableRobotsReult() { delete[] robots; }
 };
@@ -49,7 +58,8 @@ class RobotModule {
 
  public:
   // init
-  virtual const struct ModuleInfo& getModuleInfo() = 0;
+  virtual const struct ModuleInfo &getModuleInfo() = 0;
+  virtual const struct VRobotInfo &getVrobotInfo() = 0;
   virtual void prepare(colorPrintfModule_t *colorPrintf_p,
                        colorPrintfModuleVA_t *colorPrintfVA_p) = 0;
 
@@ -82,8 +92,9 @@ typedef RobotModule *(*getRobotModuleObject_t)();
 
 #ifndef MODULE_WRAPPER
 extern "C" {
-    PREFIX_FUNC_DLL unsigned short getRobotModuleApiVersion() /*{ return MODULE_API_VERSION; }*/;
-    PREFIX_FUNC_DLL RobotModule *getRobotModuleObject();
+PREFIX_FUNC_DLL unsigned short
+getRobotModuleApiVersion() /*{ return MODULE_API_VERSION; }*/;
+PREFIX_FUNC_DLL RobotModule *getRobotModuleObject();
 }
 #endif
 
