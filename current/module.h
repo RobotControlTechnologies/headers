@@ -7,6 +7,10 @@
 #ifndef MODULE_H
 #define MODULE_H
 
+#ifndef MODULE_WRAPPER_H
+#define MODULE_API_VERSION 101
+#endif
+
 #include <cstdarg>
 #include <cstddef>
 
@@ -16,14 +20,15 @@ typedef double variable_value;
 enum class ModuleTypes {
 	Robot = 1,
 	Control = 2,
-	Function = 3
+	Function = 3,
+  DB = 4
 };
 
 struct ModuleInfo {
-  char *uid;
+  const char *uid;
   enum Modes { PROD, SPEC } mode;
   unsigned short version;
-  char *digest;
+  const char *digest;
 };
 
 struct FunctionData {
@@ -108,9 +113,9 @@ typedef void(colorPrintfModule_t)(void *, ConsoleColor, const char *, ...);
 typedef void(colorPrintfModuleVA_t)(void *, ConsoleColor, const char *,
                                     va_list);
 
-typedef void(colorPrintfRobot_t)(void *, const char *, ConsoleColor,
+typedef void(colorPrintfRobot_t)(void *, ConsoleColor,
                                  const char *, ...);
-typedef void(colorPrintfRobotVA_t)(void *, const char *, ConsoleColor,
+typedef void(colorPrintfRobotVA_t)(void *, ConsoleColor,
                                    const char *, va_list);
 
 #ifdef _WIN32

@@ -35,12 +35,12 @@ class Robot {
   virtual ~Robot() {}
 };
 
-struct AviableRobotsResult {
+struct AviableRobotsReult {
   Robot **robots;
   unsigned int count_robots;
-  AviableRobotsResult(Robot **robots, unsigned int count_robots) : robots(robots), count_robots(count_robots) {}
+  AviableRobotsReult(Robot **robots, unsigned int count_robots) : robots(robots), count_robots(count_robots) {}
   void destroy() { delete this; }
-  ~AviableRobotsResult() { delete[] robots; }
+  ~AviableRobotsReult() { delete[] robots; }
 };
 
 class RobotModule {
@@ -67,7 +67,7 @@ class RobotModule {
 
   // intepreter - program
   virtual int startProgram(int uniq_index) = 0;
-  virtual AviableRobotsResult *getAviableRobots() = 0;
+  virtual AviableRobotsReult *getAviableRobots() = 0;
   virtual Robot *robotRequire(Robot *robot) = 0;
   virtual void robotFree(Robot *robot) = 0;
   virtual int endProgram(int uniq_index) = 0;

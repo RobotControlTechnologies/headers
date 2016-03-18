@@ -4,10 +4,8 @@
  *
  */
 
-#ifndef FUNCTION_MODULE_H
-#define FUNCTION_MODULE_H
-
-#define FUNCTION_MODULE_API_VERSION 100;
+#ifndef FUNCTION_MODULE_H_100
+#define FUNCTION_MODULE_H_100
 
 class FunctionModule {
  protected:
@@ -42,9 +40,9 @@ typedef FunctionModule *(*getFunctionModuleObject_t)();
 
 #ifndef MODULE_WRAPPER
 extern "C" {
-    PREFIX_FUNC_DLL unsigned short getFunctionModuleApiVersion() /*{ return FUNCTION_MODULE_API_VERSION; }*/;
+    PREFIX_FUNC_DLL unsigned short getFunctionModuleApiVersion() /*{ return MODULE_API_VERSION; }*/;
     PREFIX_FUNC_DLL FunctionModule *getFunctionModuleObject();
 }
 #endif
 
-#endif /* FUNCTION_MODULE_H */
+#endif /* FUNCTION_MODULE_H_100 */

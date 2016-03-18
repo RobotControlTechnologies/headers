@@ -1,19 +1,26 @@
 /*
- * File:   control_module.h
+ * File:   robot_module.h
  * Author: m79lol
  *
  */
 
-#ifndef CONTROL_MODULE_H_100
-#define CONTROL_MODULE_H_100
+#ifndef DB_MODULE_H
+#define DB_MODULE_H
 
-class ControlModule;
+struct DBModuleData {
+  const char *iid;
+  const char *hash;
+  unsigned short version;
+};
 
-typedef void (*sendAxisState_t)(ControlModule *, system_value, variable_value);
+struct DBRobotData {
+  const DBModuleData *module_data;
+  const char *robot_uid;
+};
 
-class ControlModule {
+class DBModule {
  protected:
-  ControlModule() {}
+  DBModule() {}
 
  public:
   // init
@@ -22,12 +29,10 @@ class ControlModule {
                        colorPrintfModuleVA_t *colorPrintfVA_p) = 0;
 
   // compiler only
-  virtual AxisData **getAxis(unsigned int *count_axis) = 0;
   virtual void *writePC(unsigned int *buffer_length) = 0;
 
   // intepreter - devices
   virtual int init() = 0;
-  virtual void execute(sendAxisState_t sendAxisState) = 0;
   virtual void final() = 0;
 
   // intepreter - program & lib
@@ -35,21 +40,22 @@ class ControlModule {
 
   // intepreter - program
   virtual int startProgram(int uniq_index) = 0;
+  virtual const DBRobotData *makeChoise(const DBRobotData** robots_data, unsigned int count_robots) = 0;
   virtual int endProgram(int uniq_index) = 0;
 
   // destructor
   virtual void destroy() = 0;
-  virtual ~ControlModule() {}
+  virtual ~DBModule() {}
 };
 
-typedef unsigned short (*getControlModuleApiVersion_t)();
-typedef ControlModule *(*getControlModuleObject_t)();
+typedef unsigned short (*getDBModuleApiVersion_t)();
+typedef DBModule *(*getDBModuleObject_t)();
 
 #ifndef MODULE_WRAPPER
 extern "C" {
-    PREFIX_FUNC_DLL unsigned short getControlModuleApiVersion() /*{ return MODULE_API_VERSION; }*/;
-    PREFIX_FUNC_DLL ControlModule *getControlModuleObject();
+    PREFIX_FUNC_DLL unsigned short getDBModuleApiVersion() /*{ return MODULE_API_VERSION; }*/;
+    PREFIX_FUNC_DLL DBModule *getDBModuleObject();
 }
 #endif
 
-#endif /* CONTROL_MODULE_H_100 */
+#endif /* DB_MODULE_H */
