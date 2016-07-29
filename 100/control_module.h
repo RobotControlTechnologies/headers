@@ -4,10 +4,8 @@
  *
  */
 
-#ifndef CONTROL_MODULE_H
-#define CONTROL_MODULE_H
-
-#define CONTROL_MODULE_API_VERSION 100;
+#ifndef CONTROL_MODULE_H_100
+#define CONTROL_MODULE_H_100
 
 class ControlModule;
 
@@ -49,9 +47,9 @@ typedef ControlModule *(*getControlModuleObject_t)();
 
 #ifndef MODULE_WRAPPER
 extern "C" {
-    PREFIX_FUNC_DLL unsigned short getControlModuleApiVersion() /*{ return CONTROL_MODULE_API_VERSION; }*/;
+    PREFIX_FUNC_DLL unsigned short getControlModuleApiVersion() /*{ return MODULE_API_VERSION; }*/;
     PREFIX_FUNC_DLL ControlModule *getControlModuleObject();
 }
 #endif
 
-#endif /* CONTROL_MODULE_H */
+#endif /* CONTROL_MODULE_H_100 */

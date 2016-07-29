@@ -4,16 +4,23 @@
  *
  */
 
-#ifndef MODULE_H
-#define MODULE_H
+#ifndef MODULE_H_100
+#define MODULE_H_100
+
+#ifndef MODULE_WRAPPER_H
+#define MODULE_API_VERSION 100
+#endif
+
+#include <cstdarg>
+#include <cstddef>
 
 typedef int system_value;
 typedef double variable_value;
 
 enum class ModuleTypes {
-	Robot = 1,
-	Control = 2,
-	Function = 3
+  Robot = 1,
+  Control = 2,
+  Function = 3
 };
 
 struct ModuleInfo {
@@ -116,5 +123,4 @@ typedef void(colorPrintfRobotVA_t)(void *, const char *, ConsoleColor,
 #define PREFIX_FUNC_DLL
 #endif
 
-typedef unsigned short (*getApiVersion_t)();
-#endif /* MODULE_H */
+#endif /* MODULE_H_100 */

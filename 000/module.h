@@ -7,6 +7,10 @@
 #ifndef MODULE_H_000
 #define MODULE_H_000
 
+#ifndef MODULE_WRAPPER_H
+#define MODULE_API_VERSION 000
+#endif
+
 typedef int system_value;
 typedef double variable_value;
 
