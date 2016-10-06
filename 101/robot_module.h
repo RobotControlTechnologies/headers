@@ -36,11 +36,14 @@ class Robot {
 };
 
 struct AviableRobotsResult {
-  Robot **robots;
-  unsigned int count_robots;
-  AviableRobotsResult(Robot **robots, unsigned int count_robots) : robots(robots), count_robots(count_robots) {}
+  Robot **busy_robots;
+  Robot **free_robots;
+  unsigned int count_busy_robots;
+  unsigned int count_free_robots;
+  AviableRobotsResult(Robot **busy_robots, Robot **free_robots, unsigned int count_busy_robots, unsigned int count_free_robots) : 
+    busy_robots(busy_robots), free_robots(free_robots), count_busy_robots(count_busy_robots), count_free_robots(count_free_robots) {}
   void destroy() { delete this; }
-  ~AviableRobotsResult() { delete[] robots; }
+  ~AviableRobotsResult() { delete[] busy_robots; delete[] free_robots; }
 };
 
 class RobotModule {

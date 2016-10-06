@@ -28,6 +28,7 @@ struct ChoiceModuleData {
 struct ChoiceRobotData {
   const ChoiceModuleData *module_data;
   const char *robot_uid;
+  bool is_aviable;
 };
 
 class ChoiceModule {
