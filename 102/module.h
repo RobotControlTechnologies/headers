@@ -4,8 +4,8 @@
  *
  */
 
-#ifndef MODULE_H
-#define MODULE_H
+#ifndef MODULE_H_102
+#define MODULE_H_102
 
 #ifndef MODULE_WRAPPER_H
 #define MODULE_API_VERSION 102
@@ -130,11 +130,10 @@ struct RobotInfoResult {
 
 typedef const RobotInfoResult* (initCallback_t)(unsigned size, const RobotInfo robots[]);
 
-
 #ifdef _WIN32
 #define PREFIX_FUNC_DLL __declspec(dllexport)
 #else
 #define PREFIX_FUNC_DLL
 #endif
 
-#endif /* MODULE_H */
+#endif /* MODULE_H_102 */

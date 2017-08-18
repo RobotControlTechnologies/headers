@@ -4,8 +4,8 @@
  *
  */
 
-#ifndef CHOICE_MODULE_H
-#define CHOICE_MODULE_H
+#ifndef CHOICE_MODULE_H_102
+#define CHOICE_MODULE_H_102
 
 struct ChoiceFunctionData {
   enum CallType {
@@ -53,7 +53,9 @@ class ChoiceModule {
 
   // intepreter - program
   virtual int startProgram(int run_index, int pc_index) = 0;
-  virtual const ChoiceRobotData *makeChoice(int run_index, const ChoiceFunctionData** function_data, unsigned int count_functions, const ChoiceRobotData** robots_data, unsigned int count_robots) = 0;
+  virtual const ChoiceRobotData *makeChoice(int run_index,
+      const ChoiceFunctionData** function_data, unsigned int count_functions,
+      const ChoiceRobotData** robots_data, unsigned int count_robots) = 0;
   virtual int endProgram(int run_index) = 0;
 
   // destructor
@@ -66,9 +68,9 @@ typedef ChoiceModule *(*getChoiceModuleObject_t)();
 
 #ifndef MODULE_WRAPPER
 extern "C" {
-    PREFIX_FUNC_DLL unsigned short getChoiceModuleApiVersion() /*{ return MODULE_API_VERSION; }*/;
-    PREFIX_FUNC_DLL ChoiceModule *getChoiceModuleObject();
+  PREFIX_FUNC_DLL unsigned short getChoiceModuleApiVersion() /*{ return MODULE_API_VERSION; }*/;
+  PREFIX_FUNC_DLL ChoiceModule *getChoiceModuleObject();
 }
 #endif
 
-#endif /* CHOICE_MODULE_H */
+#endif /* CHOICE_MODULE_H_102 */

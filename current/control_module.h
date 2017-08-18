@@ -26,7 +26,7 @@ class ControlModule {
   virtual void *writePC(unsigned int *buffer_length) = 0;
 
   // intepreter - devices
-  virtual int init() = 0;
+  virtual int init(initCallback_t& initCallback) = 0;
   virtual void execute(int run_index, sendAxisState_t sendAxisState) = 0;
   virtual void final() = 0;
 
