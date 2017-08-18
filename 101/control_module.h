@@ -4,8 +4,8 @@
  *
  */
 
-#ifndef CONTROL_MODULE_H
-#define CONTROL_MODULE_H
+#ifndef CONTROL_MODULE_H_101
+#define CONTROL_MODULE_H_101
 
 class ControlModule;
 
@@ -52,4 +52,4 @@ extern "C" {
 }
 #endif
 
-#endif /* CONTROL_MODULE_H */
+#endif /* CONTROL_MODULE_H_101 */

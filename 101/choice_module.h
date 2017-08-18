@@ -4,8 +4,8 @@
  *
  */
 
-#ifndef CHOICE_MODULE_H
-#define CHOICE_MODULE_H
+#ifndef CHOICE_MODULE_H_101
+#define CHOICE_MODULE_H_101
 
 struct ChoiceFunctionData {
   enum CallType {
@@ -71,4 +71,4 @@ extern "C" {
 }
 #endif
 
-#endif /* CHOICE_MODULE_H */
+#endif /* CHOICE_MODULE_H_101 */

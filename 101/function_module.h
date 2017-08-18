@@ -4,8 +4,8 @@
  *
  */
 
-#ifndef FUNCTION_MODULE_H
-#define FUNCTION_MODULE_H
+#ifndef FUNCTION_MODULE_H_101
+#define FUNCTION_MODULE_H_101
 
 class FunctionModule {
  protected:
@@ -49,4 +49,4 @@ extern "C" {
 }
 #endif
 
-#endif /* FUNCTION_MODULE_H */
+#endif /* FUNCTION_MODULE_H_101 */

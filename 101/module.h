@@ -4,8 +4,8 @@
  *
  */
 
-#ifndef MODULE_H
-#define MODULE_H
+#ifndef MODULE_H_101
+#define MODULE_H_101
 
 #ifndef MODULE_WRAPPER_H
 #define MODULE_API_VERSION 101
@@ -124,4 +124,4 @@ typedef void(colorPrintfRobotVA_t)(void *, ConsoleColor,
 #define PREFIX_FUNC_DLL
 #endif
 
-#endif /* MODULE_H */
+#endif /* MODULE_H_101 */
